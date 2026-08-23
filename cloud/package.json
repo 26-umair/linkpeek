@@ -1,0 +1,11 @@
+{
+  "name": "webp-optimizer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dependency-light local smart image to WebP optimizer",
+  "scripts": {
+    "start": "node src/server.js",
+    "check": "node src/self-test.js"
+  }
+}
