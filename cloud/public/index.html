@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>WebP Optimizer</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">W</div><div><div class="brand-name">WebP Optimizer</div><div class="brand-sub">Private • Cloud • Fast</div></div></div>
+      <div class="status-pill" id="statusPill"><span class="status-dot"></span><span id="statusText">Checking engine…</span></div>
+    </header>
+    <main>
+      <section class="hero"><div class="eyebrow">ANY IMAGE → WEBP</div><h1>Smaller files.<br><span>Same visual quality.</span></h1><p>Drop almost any image format. Smart mode finds a visually-safe WebP while keeping original dimensions by default.</p></section>
+      <section class="workbench">
+        <div class="dropzone" id="dropzone" tabindex="0">
+          <input id="fileInput" type="file" multiple hidden accept="image/*,.heic,.heif,.tif,.tiff,.psd,.dng,.cr2,.cr3,.nef,.arw,.raf,.orf,.rw2,.ico" />
+          <div class="drop-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0 4 4m-4-4L8 8M5 13v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg></div>
+          <h2>Drop images here</h2><p>PNG, JPG, HEIC, TIFF, AVIF, GIF, SVG, PSD, RAW & more</p><button class="primary" id="browseBtn">Browse Images</button>
+          <div class="privacy-note"><span>●</span> Temporary processing only • files are not permanently stored</div>
+        </div>
+        <aside class="settings-card">
+          <div class="settings-head"><div><div class="mini-label">MODE</div><h3>Compression settings</h3></div><button class="link-btn" id="resetBtn">Reset</button></div>
+          <div class="mode-grid" id="modeGrid"><button class="mode active" data-mode="smart"><b>Smart</b><span>Recommended</span></button><button class="mode" data-mode="maximum"><b>Maximum</b><span>Highest fidelity</span></button><button class="mode" data-mode="smallest"><b>Smallest</b><span>Aggressive</span></button><button class="mode" data-mode="lossless"><b>Lossless</b><span>Pixel-safe encode</span></button></div>
+          <div class="setting-row"><div><label for="targetKB">Soft size target</label><small>Quality remains the priority</small></div><select id="targetKB"><option value="0">No target</option><option value="500">500 KB</option><option value="900" selected>900 KB</option><option value="1500">1.5 MB</option><option value="2500">2.5 MB</option></select></div>
+          <div class="setting-row"><div><label for="maxDimension">Maximum dimension</label><small>Original dimensions are preserved by default</small></div><select id="maxDimension"><option value="0" selected>Original</option><option value="3840">3840 px</option><option value="2560">2560 px</option><option value="1920">1920 px</option><option value="1280">1280 px</option></select></div>
+          <div class="engine-note" id="engineNote">Checking supported formats…</div>
+        </aside>
+      </section>
+      <section class="queue-section hidden" id="queueSection"><div class="queue-head"><div><div class="mini-label">BATCH</div><h3><span id="fileCount">0</span> images selected</h3></div><div class="queue-actions"><button class="secondary" id="clearBtn">Clear all</button><button class="primary" id="convertBtn">Convert & Optimize</button></div></div><div class="file-list" id="fileList"></div></section>
+      <section class="results-section hidden" id="resultsSection"><div class="results-summary"><div><div class="mini-label">RESULT</div><h3>Optimization complete</h3><p id="summaryText"></p></div><button class="primary" id="downloadAllBtn">Download All .ZIP</button></div><div class="result-list" id="resultList"></div></section>
+    </main>
+    <footer><span>Private cloud image processing</span><span>•</span><span>Temporary files automatically expire</span></footer>
+  </div>
+  <div class="toast" id="toast"></div><script type="module" src="/app.js"></script>
+</body>
+</html>
