@@ -10,12 +10,10 @@ RUN apt-get update \
     && printf '#!/bin/sh\ncase "$1" in identify|compare) cmd="$1"; shift; exec "$cmd" "$@";; -version) exec convert -version;; *) exec convert "$@";; esac\n' > /usr/local/bin/magick \
     && chmod +x /usr/local/bin/magick
 
-COPY bundle /tmp/bundle
-RUN cat /tmp/bundle/chunk1.b64 /tmp/bundle/chunk2.b64 /tmp/bundle/chunk3.b64 /tmp/bundle/chunk4.b64 \
-    | base64 -d \
-    | tar -xz -C /app \
-    && rm -rf /tmp/bundle \
-    && mkdir -p /app/temp
+COPY cloud/package.json ./package.json
+COPY cloud/src ./src
+COPY cloud/public ./public
+RUN mkdir -p /app/temp
 
 ENV PORT=10000
 EXPOSE 10000
